@@ -1,0 +1,43 @@
+(* Aufgabe 4 *)
+fun iter n s f = if n < 0 then s else iter (n-1) f(s) f
+fun add (n : int) (s : int) = #1 (iter n (s,3) (fn (a : int, if y=3 then 7 else 3)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

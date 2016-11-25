@@ -1,0 +1,76 @@
+(* this file is to practice ideas of Lists and Strings of Chapter 4 *)
+
+
+(* recursive length function *)
+fun length xs = if xs = nil then 0 else 1 + length (tl xs)
+
+(* tail recursive length function with let expression *)
+fun lengthend xs = let fun lengthHilfe (a, xs) = if xs = nil then a else
+						 lengthHilfe (a + 1, tl xs)
+                   in 
+                       lengthHilfe(0, xs)
+                   end
+
+fun length1 nil = 0 
+  | length1 (x::xs) = 1 + length1 xs 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
