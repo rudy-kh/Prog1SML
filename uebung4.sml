@@ -7,9 +7,9 @@ fun member1 n xs = List.exists (fn y => y = n) xs
 (* c *)
 fun member2 n xs = if (List.filter (fn y => y=n) xs) = [] then false else true
 
-(* d *) (* still not working *)
-fun member3 n xs = foldl (fn (ys,s) => s = (y=n)) false xs
-
+(* d *) (* still not working 
+fun member3 n xs = foldl (fn (ys,s) => s = (ys=n)) false xs
+*)
 
 (* Aufgabe 5 *)
 (*
@@ -82,10 +82,17 @@ fun rev xs = foldr append nil xsfun rev1 xs = foldr append([], xs) nil xs;
 
 
 (* Aufgabe 16 *)
-
+(* still has to be solved*)
 
 
 (* Aufgabe 17 *)
+
+fun sortOddEven (xs : int list) = let val evenNumList = List.filter (fn y => (y mod 2)=0) xs
+				      val oddRevList  = rev (List.filter (fn y => (y mod 2) <> 0) xs ) 
+				  in
+				      evenNumList @ oddRevList
+				  end	
+
 
 
 (* Aufgabe 18 *)
@@ -123,3 +130,11 @@ fun foldl1 f s xs = rev(foldr f s xs)
 
 (* d *)
 fun foldl2 f s xs = foldr f s  xs
+
+
+
+fun sortOddEven (xs : int list) = let val evenNumList = List.filter (fn y => (y mod 2)=0) xs
+				      val oddRevList  = rev (List.filter (fn y => (y mod 2) <> 0) xs ) 
+				  in
+				      evenNumList @ oddRevList
+				  end			
