@@ -1,6 +1,9 @@
 (* Uebungsblatter D *)
 
 (* Aufgabe 4 *)
+(* a *)
+fun memberRegel n nil = false 
+  | memberRegel n (y::xs) = (n = y) orelse memberRegel n xs 
 (* b *)
 fun member1 n xs = List.exists (fn y => y = n) xs
 
@@ -138,3 +141,5 @@ fun sortOddEven (xs : int list) = let val evenNumList = List.filter (fn y => (y 
 				  in
 				      evenNumList @ oddRevList
 				  end			
+fun tabulateRange m n f = List.tabulate (n-m, f)
+				      
