@@ -9,12 +9,16 @@ fun tif xs = let
                 | rwb (_,t) = t
                 val tflag = foldl rwb ([],[],[],[],[]) xs
              in
-                #1 tflag @ #2 tflag @ #3 tflag #4 tflag #5 tflag
+                #1 tflag @ #2 tflag @ #3 tflag @  #4 tflag @ #5 tflag
              end
 *)
 
 
-(* Aufgabe E.12 
+(* Aufgabe E.12 *)
+fun first (s:int) (p:int->bool) : int = if p s then s else first (s+1) p
+
+fun forall m n p = m>n orelse (p m andalso forall (m+1) n p)								 
+								 
 fun sqrt (x:int) = first 1 (fn (k:int) => k*k>x) - 1
 
 fun prime x = x>=2 andalso
@@ -22,9 +26,9 @@ fun prime x = x>=2 andalso
 
 fun nextprime x = first (x+1) prime
 
-fun primelist n = foldl nextprime n
+fun primelist n =  nextprime n
 
-*)
+
 
 (* Aufgabe E.13 *)
 
@@ -59,11 +63,24 @@ fun pqsort cmp nil = nil
 
 
 (* Aufgabe E.3 *)
-fun split xs = foldl (fn (x ,( l , s )) => (s , x :: l )) ( nil , nil ) xs			   
 fun partition1 n xs = foldl (fn  (x,(us,vs)) => if  x  < n then (x ::us, vs) else (us,x ::vs) ) ([],[]) xs
 
-				   
+
+(* Aufgabe 4 *)
+(* a *)			    
+fun qsort nil = nil
+  | qsort ( x :: xr ) = let val ( us , vs ) = partition1 x xr
+			 in qsort us @ [ x ] @ qsort vs end
+
 (* Aufgabe E.5 *)
+fun isort' xs = let
+                   fun insert (x , nil ) = [ x ]
+		     | insert (x , y :: yr ) = if x<y then y :: x :: yr
+					       else if x=y then x :: yr
+					            else x :: insert (y , yr )
+                in foldl insert nil xs end			    
+			    
+(* Aufgabe E.1 *)
 fun signum x = case  Int.compare(x,0)   of
 		   GREATER => 1
 		 | LESS  => ~1
