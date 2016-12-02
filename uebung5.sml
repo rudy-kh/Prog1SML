@@ -86,3 +86,29 @@ fun signum x = case  Int.compare(x,0)   of
 		 | LESS  => ~1
 		 | _  => 0 
 		
+
+(* Aufgabe E.17 *)
+(* a *)			     
+datatype shape =
+	   Circle of real
+	 | Square of real
+	 | Triangle of real * real * real
+	 | Polyglon of real * real				 
+
+(* b *)
+fun edgeLength (Circle r ) = 2.0 * Math.pi * r
+  | edgeLength (Square a)  = 4.0 * a 
+  | edgeLength (Triangle (a, b, c)) = a + b + c
+  | edgeLength (Polyglon (n, a)) = n * a 
+
+
+(* c *)
+fun scale s (Circle r ) = Circle (s * r)
+  | scale s (Square a ) = Square (s * a)
+  | scale s (Triangle (a,b,c)) = Triangle (a * s, b * s, c * s)
+  | scale s (Polyglon (n, a)) = Polyglon (n , s * a) 
+					   
+
+
+
+			     
